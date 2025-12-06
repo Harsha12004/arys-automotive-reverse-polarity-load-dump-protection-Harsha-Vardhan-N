@@ -1,16 +1,17 @@
-* Q2 Test 3 - Load Dump Surge
-Vbat in 0 PULSE(12 80 5ms 1ms 1ms 10ms 40ms)
-D1 in mid Dmodel
-D2 mid 0 TVS
+* STEP 3 - Load Dump Protection with TVS Diode (Corrected)
+
+Vin in 0 PWL(0 12  1m 12  2m 80  352m 80  353m 12)
+
+* Reverse polarity diode (correct orientation)
+D1 mid in Dmodel
+.model Dmodel D(BV=40 IBV=1mA RS=0.1 TT=1u)
+
+* TVS diode to clamp surge
+D2 mid 0 TVS48
+.model TVS48 D(BV=48 IBV=1m RS=0.05 CJO=200p)
+
+* Load
 Rload mid 0 100
 
-.model Dmodel D
-.model TVS D(BV=48 IBV=1mA)
-
-.tran 1ms 60ms
-.control
-run
-plot v(in) v(mid)
-plot @D2[id]
-.endc
+.tran 0.1m 400m
 .end
