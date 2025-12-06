@@ -1,0 +1,69 @@
+* ==========================================================
+* Q2 – Automotive Reverse-Polarity & Load-Dump Protection
+* Master NGSPICE Simulation File
+* ----------------------------------------------------------
+* This file contains ALL THREE TEST CASES:
+*
+*   TEST 1 — Basic Battery Test (normal 12 V)
+*   TEST 2 — Reverse Polarity Test (–12 V)
+*   TEST 3 — Load Dump Surge (12 → 80 → 12 V)
+*
+* INSTRUCTIONS:
+* ----------------------------------------------------------
+* ENABLE ONLY ONE TEST AT A TIME:
+*   - To RUN a test → UNCOMMENT its Vin + .tran lines
+*   - To DISABLE a test → COMMENT out its Vin + .tran lines
+*
+* Example:
+*   ;Vin in 0 DC 12   <-- commented (disabled)
+*   Vin in 0 DC -12   <-- uncommented (enabled)
+*
+* ==========================================================
+*                 >>> SELECT ONE TEST <<<
+* ==========================================================
+
+
+************** TEST 1: BASIC BATTERY TEST (DEFAULT OFF) ****
+* Normal 12V battery powering the ECU load
+*Vin in 0 DC 12
+*.tran 1m 20m
+*************************************************************
+
+
+************** TEST 2: REVERSE POLARITY TEST (DEFAULT OFF) ***
+* Simulates battery connected backwards (–12V)
+*Vin in 0 DC -12
+*.tran 1m 40m
+*************************************************************
+
+
+************** TEST 3: LOAD DUMP SURGE TEST (ENABLE FOR NOW) *
+* 12 V → 80 V surge → back to 12 V
+* Use this to verify TVS diode clamping behavior
+Vin in 0 PWL(
++   0      12
++   1m     12
++   2m     80
++   352m   80
++   353m   12
+)
+.tran 0.1m 400m
+*************************************************************
+
+
+* ==========================================================
+* COMMON PROTECTION CIRCUIT (USED IN ALL TESTS)
+* ==========================================================
+
+* D1 — Reverse polarity protection diode (series diode)
+D1 in mid DREV
+.model DREV D(BV=40 IBV=1mA RS=0.1 TT=1u)
+
+* D2 — TVS diode for load dump suppression (~48V clamp)
+D2 mid 0 TVS48
+.model TVS48 D(BV=48 IBV=1m RS=0.05 CJO=200p)
+
+* ECU resistive load (example: 100 Ω)
+Rload mid 0 100
+
+.end
