@@ -1,0 +1,16 @@
+* Q2 Test 3 - Load Dump Surge
+Vbat in 0 PULSE(12 80 5ms 1ms 1ms 10ms 40ms)
+D1 in mid Dmodel
+D2 mid 0 TVS
+Rload mid 0 100
+
+.model Dmodel D
+.model TVS D(BV=48 IBV=1mA)
+
+.tran 1ms 60ms
+.control
+run
+plot v(in) v(mid)
+plot @D2[id]
+.endc
+.end
