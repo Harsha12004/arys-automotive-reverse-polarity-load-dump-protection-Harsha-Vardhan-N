@@ -1,0 +1,2 @@
+Placeholder for Step 3 voltage plot (load dump test).
+Replace this file with step3_voltage.png after simulation.
