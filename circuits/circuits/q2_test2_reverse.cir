@@ -1,15 +1,14 @@
-* Q2 Test 2 - Reverse Polarity
-Vbat in 0 DC -12
-D1 in mid Dmodel
-D2 mid 0 TVS
-Rload mid 0 100
+* STEP 2 - Reverse Polarity Protection using Diode
 
-.model Dmodel D
-.model TVS D(BV=48 IBV=1mA)
+Vin in 0 DC 12
 
-.tran 1ms 50ms
-.control
-run
-plot v(in) v(mid)
-.endc
+* Reverse polarity protection diode
+D1 in out Dmodel
+
+.model Dmodel D(BV=40 IBV=1mA RS=0.1 TT=1u)
+
+* Load
+Rload out 0 100
+
+.tran 1ms 40ms
 .end
