@@ -1,0 +1,15 @@
+* Q2 Test 1 - Normal 12V Battery
+Vbat in 0 DC 12
+D1 in mid Dmodel
+D2 mid 0 TVS
+Rload mid 0 100
+
+.model Dmodel D
+.model TVS D(BV=48 IBV=1mA)
+
+.tran 1ms 50ms
+.control
+run
+plot v(in) v(mid)
+.endc
+.end
