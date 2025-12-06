@@ -1,0 +1,2 @@
+Placeholder for Step 1 voltage plot (battery test).
+Replace this file with step1_voltage.png after simulation.
