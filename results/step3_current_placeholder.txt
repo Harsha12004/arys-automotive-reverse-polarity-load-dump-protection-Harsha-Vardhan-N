@@ -1,2 +1,0 @@
-Placeholder for Step 3 current plot (TVS or diode current during load dump).
-Replace this file with step3_current.png after simulation.
