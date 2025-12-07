@@ -1,2 +1,0 @@
-Placeholder for Step 2 voltage plot (reverse polarity test).
-Replace this file with step2_voltage.png after simulation.
