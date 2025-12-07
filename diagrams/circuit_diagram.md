@@ -15,3 +15,6 @@ fig.1 MOSFET-Based Reverse Polarity Protection With Gate Zener Clamp
 fig.2a and 2b Automotive Input Filter + MOSFET Protection
 <img width="1210" height="642" alt="image" src="https://github.com/user-attachments/assets/a0094949-02dd-4c06-bbab-cacf9636d846" />
 <img width="370" height="130" alt="image" src="https://github.com/user-attachments/assets/92b5145f-666c-4f39-913e-0f04892e0d6a" />
+fig.3 the circuit diagram for ECU protection
+<img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/27c2bf4f-a273-4c8e-9ee2-3bb724cf273f" />
+
